@@ -49,47 +49,41 @@ const Anchor = styled(Link)`
 `
 
 export default function Copyright() {
-  const { foot } = useStaticQuery(graphql`
-    query {
-      foot: allSanityFooter {
-        nodes {
-          id
-          title
-          dev
-          devlink
-          links {
-            _key
-            pagename
-            pagelink
-          }
-        }
-      }
-    }
-  `)
-  const { nodes } = foot
-
   return (
-    <>
-      {nodes.map(node => (
-        <CopyStyles className="storybrand" key={node.id}>
-          <p>
-            &copy; {new Date().getFullYear()} All Rights Reserved {node.title}
-          </p>
-          <p>
-            Built by{' '}
-            <a href={node.devlink} rel="noopener noreferrer" target="__blank">
-              {node.dev}
-            </a>
-          </p>
-          <List>
-            {node.links.map(link => (
-              <Item key={link._key}>
-                <Anchor to={link.pagelink}>{link.pagename}</Anchor>
-              </Item>
-            ))}
-          </List>
-        </CopyStyles>
-      ))}
-    </>
+    <CopyStyles className="storybrand">
+      <p>
+        &copy; {new Date().getFullYear()} All Rights Reserved Kinna's House of
+        Love
+      </p>
+      <p>
+        Header Image Source:{' '}
+        <a
+          href="https://www.lightstock.com/photos/mom-and-daughter-during-golden-hour"
+          rel="noopener noreferrer"
+          target="__blank"
+        >
+          Devon on Lightstock
+        </a>
+      </p>
+      <p>
+        Built by{' '}
+        <a
+          href="https://ericphifer.com/contact"
+          rel="noopener noreferrer"
+          target="__blank"
+        >
+          Phifer Web Solutions
+        </a>
+      </p>
+      <List>
+        <Item>
+          <Anchor to="/privacypolicy">Privacy Policy</Anchor>
+        </Item>
+        <Item> | </Item>
+        <Item>
+          <Anchor to="/termsconditions">Terms & Conditions</Anchor>
+        </Item>
+      </List>
+    </CopyStyles>
   )
 }
