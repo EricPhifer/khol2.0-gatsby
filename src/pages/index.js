@@ -17,7 +17,6 @@ const Hero = styled.div`
 const Main = styled.main`
   width: 100vw;
   height: 100%;
-  padding: 12rem 0;
   .source {
     text-decoration: none;
     &:hover {
