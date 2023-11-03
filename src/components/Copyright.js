@@ -1,4 +1,4 @@
-import { Link, graphql, useStaticQuery } from 'gatsby'
+import { Link } from 'gatsby'
 import * as React from 'react'
 import styled from 'styled-components'
 
@@ -32,9 +32,6 @@ const CopyStyles = styled.footer`
 const List = styled.ul`
   list-style-type: none;
   display: inline-flex;
-  &:first-child:after {
-    content: ' | ';
-  }
 `
 
 const Item = styled.li`
@@ -50,7 +47,7 @@ const Anchor = styled(Link)`
 
 export default function Copyright() {
   return (
-    <CopyStyles className="storybrand">
+    <CopyStyles className="copyright">
       <p>
         &copy; {new Date().getFullYear()} All Rights Reserved Kinna's House of
         Love

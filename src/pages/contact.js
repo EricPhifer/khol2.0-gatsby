@@ -1,13 +1,11 @@
 import * as React from 'react'
 import styled from 'styled-components'
-import useContact from '../utils/useContact'
 import useForm from '../utils/useForm'
 import Seo from '../components/Seo'
 
 const Main = styled.main`
   width: 100vw;
   height: 100%;
-  padding: 12rem 0;
   .source {
     text-decoration: none;
     &:hover {
@@ -32,49 +30,6 @@ const LightBlock = styled.section`
     color: var(--black);
   }
 `
-
-// const DarkBlock = styled.section`
-//   width: 100%;
-//   min-height: 50rem;
-//   padding: 5rem 2rem;
-//   background-color: rgba(0, 0, 0, 0.8);
-//   color: var(--white);
-//   input,
-//   textarea {
-//     color: var(--white);
-//   }
-//   a {
-//     color: var(--white);
-//     text-decoration: underline;
-//     &:hover {
-//       color: var(--blue);
-//     }
-//   }
-//   .cta {
-//     text-decoration: none;
-//     align-self: end;
-//   }
-//   #nav-dots {
-//     color: var(--black);
-//     background-color: var(--white);
-//     text-decoration: none;
-//     &:hover {
-//       color: var(--white);
-//       background-color: var(--blue);
-//     }
-//     &:active {
-//       border: 0.1rem dotted var(--blue);
-//       color: var(--white);
-//     }
-//     &:focus {
-//       background-color: var(--blue);
-//       color: var(--white);
-//     }
-//     &[aria-current='page'] {
-//       background-color: var(--blue);
-//     }
-//   }
-// `
 
 const WhiteSpace = styled.div`
   width: 80%;
@@ -110,9 +65,6 @@ const Form = styled.form`
   transition: 0.5s all ease;
   display: flex;
   flex-flow: column nowrap;
-  label {
-    display: none;
-  }
   input,
   textarea {
     font-size: 1.75rem;
@@ -137,9 +89,12 @@ const InlineField = styled.fieldset`
   margin-bottom: 2rem;
   input {
     padding: 1rem;
-    margin: 0 0.5rem;
-    border: none;
-    border-bottom: 0.2rem inset var(--gray);
+    margin: 0.5rem 0;
+    border-top: 0.2rem inset var(--black);
+    border-bottom: 0.2rem inset var(--black);
+    border-left: 0.1rem inset var(--black);
+    border-right: 0.1rem inset var(--black);
+    border-radius: 0.5rem;
     background: transparent;
   }
   @media only screen and (max-width: 900px) {
@@ -166,19 +121,31 @@ const FullField = styled.fieldset`
   input {
     width: 100%;
     padding: 1rem;
-    margin: 0 0.5rem;
-    border: none;
-    border-bottom: 0.2rem inset var(--gray);
+    margin: 0.5rem 0;
+    border-top: 0.2rem inset var(--black);
+    border-bottom: 0.2rem inset var(--black);
+    border-left: 0.1rem inset var(--black);
+    border-right: 0.1rem inset var(--black);
+    border-radius: 0.5rem;
     background: transparent;
   }
   textarea {
     width: 100%;
-    margin-left: 0.5rem;
+    margin: 0.5rem 0;
     padding: 1rem;
-    border: none;
-    border-bottom: 0.2rem inset var(--gray);
+    border-top: 0.2rem inset var(--black);
+    border-bottom: 0.2rem inset var(--black);
+    border-left: 0.1rem inset var(--black);
+    border-right: 0.1rem inset var(--black);
+    border-radius: 0.5rem;
     background: transparent;
   }
+`
+
+const LabelStack = styled.fieldset`
+  width: 100%;
+  display: flex;
+  flex-flow: column wrap;
 `
 
 const Submit = styled.button`
@@ -188,7 +155,8 @@ const Submit = styled.button`
   background: var(--blue);
   color: var(--white);
   border-radius: 1rem;
-  font-size: 1.85rem;
+  font-size: 2rem;
+  font-weight: bold;
   cursor: pointer;
   &:hover {
     background-color: var(--white);
@@ -210,13 +178,7 @@ export default function Contact() {
     phone: '',
     message: '',
   })
-  const { contact, error, loading, errMessage, submitContact } = useContact({
-    values,
-  })
-  console.log(contact, error, loading, submitContact)
-  if (errMessage) {
-    return <p>{errMessage}</p>
-  }
+
   return (
     <Main>
       <LightBlock>
@@ -232,50 +194,54 @@ export default function Contact() {
             <input type="hidden" name="bot-field" />
             <input type="hidden" name="form-name" value="contact" />
             <FullField className="nameEmail">
-              <label htmlFor="name">Name</label>
-              <input
-                type="text"
-                name="name"
-                id="name"
-                value={values.name}
-                onChange={updateValue}
-                placeholder="Name"
-                className="required"
-              />
+              <LabelStack>
+                <label htmlFor="name">Name</label>
+                <input
+                  type="text"
+                  name="name"
+                  id="name"
+                  value={values.name}
+                  onChange={updateValue}
+                  className="required"
+                />
+              </LabelStack>
             </FullField>
             <InlineField className="emailPhone">
-              <label htmlFor="email">Email</label>
-              <input
-                type="text"
-                name="email"
-                id="email"
-                value={values.email}
-                onChange={updateValue}
-                placeholder="Email"
-                className="required"
-              />
-              <label htmlFor="phone">Phone</label>
-              <input
-                type="text"
-                name="phone"
-                id="phone"
-                value={values.phone}
-                onChange={updateValue}
-                placeholder="Phone"
-                className="required"
-              />
+              <LabelStack>
+                <label htmlFor="email">Email</label>
+                <input
+                  type="text"
+                  name="email"
+                  id="email"
+                  value={values.email}
+                  onChange={updateValue}
+                  className="required"
+                />
+              </LabelStack>
+              <LabelStack>
+                <label htmlFor="phone">Phone</label>
+                <input
+                  type="text"
+                  name="phone"
+                  id="phone"
+                  value={values.phone}
+                  onChange={updateValue}
+                  className="required"
+                />
+              </LabelStack>
             </InlineField>
             <FullField className="message">
-              <label htmlFor="message">Message</label>
-              <textarea
-                name="message"
-                id="message"
-                value={values.message}
-                onChange={updateValue}
-                rows="7"
-                placeholder="How can we help you keep going?"
-                className="required"
-              />
+              <LabelStack>
+                <label htmlFor="message">How can we help?</label>
+                <textarea
+                  name="message"
+                  id="message"
+                  value={values.message}
+                  onChange={updateValue}
+                  rows="7"
+                  className="required"
+                />
+              </LabelStack>
             </FullField>
             <Submit type="submit" value="Submit">
               Submit

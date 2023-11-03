@@ -15,8 +15,14 @@ module.exports = {
         dataset: 'production',
       },
     },
+    {
+      resolve: 'gatsby-plugin-sanity-image',
+      options: {
+        projectId: 'wzk0i0ir',
+        dataset: 'production',
+      },
+    },
     'gatsby-plugin-image',
-    'gatsby-plugin-sanity-image',
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
     'gatsby-plugin-styled-components',

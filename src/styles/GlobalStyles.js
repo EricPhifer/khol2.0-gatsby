@@ -1,97 +1,89 @@
 import { createGlobalStyle } from 'styled-components'
 
 const GlobalStyles = createGlobalStyle`
-  /* CSS Reset by Mirkov Sasa https://github.com/mirkovsasa/CSS-Reset/blob/main/Reset.css */
+/* CSS Reset by Mirkov Sasa https://github.com/mirkovsasa/CSS-Reset/blob/main/Reset.css */
 
-  /* Resetting defaults */
-  * {
-      margin: 0;
-      padding: 0;
-      border: 0;
-      outline: 0;
-      font-size: 100%;
-      vertical-align: baseline;
-      background: transparent;
-      box-sizing: border-box;
-  }
-
-  /* Setting border box model for easier sizing of elements */
-  *, *::before, *::after {
+/* Resetting defaults */
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
     box-sizing: border-box;
-  }
+}
 
-  /* Setting font size to make 10px = 1rem for easier scaling and manipulation of all elements in rem's */
-  html {
-      font-size: 62.5%;
-  }
+/* Setting border box model for easier sizing of elements */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
 
-  /* Setting default distance between the lines */
-  body {
-      line-height: 1;
-  }
-
-  /* inheriting text for consistency */
-  input, button, textarea, select {
-    font: inherit;
-  }
-
-  /* Removing default styles for lists */    
-  ol, ul {
-      list-style: none;
-  }
-
-  /* Removing defaults styles for quotes */    
-  blockquote, q {
-      quotes: none;
-  }
-      
-  blockquote:before, blockquote:after,
-      q:before, q:after {
-      content: '';
-      content: none;
-  }
-      
-  /* Removing default outline styles for elements */
-  :focus {
-      outline: 0;
-  }
-      
-  /* Removing table defaults */
-  table {
-      border-collapse: collapse;
-      border-spacing: 0;
-  }
-
-  /* Changing default img properties for easier workflow */
-  img, picture {
-      max-width: 100%;
-      display: block;
-  }
-  /* End Reset */
-
-  // Global Styles
   :root {
-    --black: #272727;
-    --tan: #BBB094;
-    --white: #fff;
-    --gray: #585858;
-    --orange: #EF8E1C;
-    --green: #50A000;
+    --gold: #FFBF2E;
+    --white: #EFEFEF;
+    --red: #9E1E1B;
+    --orange: #C39F4D;
+    --darkgray: #585858;
     --blue: #1777BE;
-    --ctaback: #1777BE;
-    --ctafore: #fff;
+    --black: #1B0F07;
+    --select-border: var(--darkgray);
+    --select-focus: var(--blue);
+    --select-arrow: var(--darkgray);
   }
   html {
+    // background-image: url();
+    // background-size: cover;
+    // background-repeat: no-repeat;
+    // background-position: center center;
+    // background-attachment: fixed;
+    font-size: 10px;
     overflow-x: hidden;
     scroll-behavior: smooth;
   }
+
   html, body {
-    min-height: 100%;
-    max-width: 100vw;
+    min-height: 100dvh;
+    max-width: 100%;
     margin: 0;
+    overflow-x: hidden;
   }
+
   body {
-    position: relative;
+    overflow-y: hidden;
+  }
+
+  p a {
+    color: var(--blue);
+    text-decoration: underline;
+  }
+
+  button {
+    display: flex;
+    max-width: 80rem;
+    margin: 1.5rem auto;
+    padding: 2rem 0;
+    justify-content: center;
+    box-shadow: 0.3rem 0.3rem 0.5rem var(--black);
+    background: var(--blue);
+    color: white;
+    border: 0;
+    border-radius: 4rem;
+    cursor: pointer;
+    --cast: 0.2rem;
+    box-shadow: 0.5rem 0.5rem 0rem rgba(0,0,0,0.2);
+    transition: all 0.1s ease-in-out;
+    a {
+      text-decoration: none;
+      color: white;
+      font-size: 2.25rem;
+    }
+    &:hover {
+      background: #fff;
+      color: var(--blue);
+      box-shadow: -0.1rem -0.1rem 1rem rgba(0,0,0,0.2);
+    }
   }
   .gatsby-image-wrapper img[src*=base64\\,] {
     image-rendering: -moz-crisp-edges;
@@ -104,17 +96,22 @@ const GlobalStyles = createGlobalStyle`
   }
   html {
     scrollbar-width: thin;
-    scrollbar-color: var(--blue) #fff;
+    scrollbar-color: var(--red) #fff;
   }
   body::-webkit-scrollbar-track {
     background: transparent;
   }
   body::-webkit-scrollbar-thumb {
-    background-color: var(--lightred) ;
+    background-color: var(--red) ;
     border-radius: 6px;
   }
   img {
     max-width: 100%;
+  }
+  @media (max-width: 400px) {
+    h1 {
+      font-size: 2rem;
+    }
   }
 `
 

@@ -8,11 +8,9 @@ import Navigation from './Navigation'
 
 const SiteStyles = styled.div`
   width: 100vw;
-  min-height: 100vh;
+  min-height: 100dvh;
+  position: relative;
   overflow-x: hidden;
-  .copyright {
-    bottom: -10rem;
-  }
 `
 
 // eslint-disable-next-line react/prop-types
@@ -22,7 +20,9 @@ export default function Layout({ children }) {
       <GlobalStyles />
       <Typography />
       <SiteStyles>
-        <Navigation />
+        <header>
+          <Navigation />
+        </header>
         {children}
         <Copyright />
       </SiteStyles>
